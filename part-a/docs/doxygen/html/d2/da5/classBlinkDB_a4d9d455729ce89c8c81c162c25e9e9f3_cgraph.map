@@ -1,0 +1,13 @@
+<map id="BlinkDB::compact" name="BlinkDB::compact">
+<area shape="rect" id="Node000001" title="Compacts multiple SSTable files into a single SSTable." alt="" coords="5,55,144,80"/>
+<area shape="rect" id="Node000002" href="$d3/d0a/blinkdb_8cpp.html#addad405af359df828567151328f601f4" title="Build an in&#45;memory index for an SSTable file and create its Bloom filter." alt="" coords="192,55,368,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,65,178,65,178,70,144,70"/>
+<area shape="rect" id="Node000003" href="$d2/d5a/classBloomFilter.html#aa7f2ed6d335cd633b4e5a1bd5f05cac4" title="Adds a string element to the Bloom filter." alt="" coords="439,5,569,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,52,432,31,433,36,339,57"/>
+<area shape="rect" id="Node000005" href="$d3/d0a/blinkdb_8cpp.html#a7bf594efc670faca63d538b39dde4218" title="Retrieve a full line from a memory&#45;mapped file starting at a given offset." alt="" coords="416,55,592,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="368,65,402,65,402,70,368,70"/>
+<area shape="rect" id="Node000006" href="$d3/d0a/blinkdb_8cpp.html#ad3681da1d388fcc235dab6bd01c8c26f" title="Memory&#45;map a file and return a pointer to its content along with its size." alt="" coords="465,104,543,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="339,77,452,103,451,108,338,83"/>
+<area shape="rect" id="Node000004" href="$d2/d5a/classBloomFilter.html#ab3ca033460ceaf23b9bcd6800f5ed92e" title="Hash function combining std::hash with a seed." alt="" coords="640,5,787,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="569,15,626,15,626,21,569,21"/>
+</map>

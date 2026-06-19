@@ -1,0 +1,40 @@
+# Doxyfile 1.8.20
+
+# Project related configuration options
+PROJECT_NAME           = "BlinkDB Storage Engine"
+PROJECT_NUMBER         = "1.0"
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = YES
+OUTPUT_LANGUAGE        = English
+BRIEF_MEMBER_DESC      = YES
+
+# Build related configuration options
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = YES
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+
+# Input
+INPUT                  = blinkdb.cpp blinkdb.h lru_cache.h server.cpp
+FILE_PATTERNS          = *.cpp *.h
+RECURSIVE              = NO
+
+# PDF output generation (via LaTeX)
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+PDF_HYPERLINKS         = YES
+
+# HTML output configuration
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+
+# Diagrams configuration (if Graphviz is installed)
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 4
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+# End of Doxyfile

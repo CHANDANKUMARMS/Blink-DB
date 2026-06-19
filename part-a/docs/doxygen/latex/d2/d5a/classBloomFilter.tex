@@ -1,0 +1,181 @@
+\doxysection{Bloom\+Filter Class Reference}
+\hypertarget{classBloomFilter}{}\label{classBloomFilter}\index{BloomFilter@{BloomFilter}}
+
+
+A simple Bloom filter implementation.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBloomFilter_ae7f634645ff6bebea9776af692d49526}{Bloom\+Filter}} (size\+\_\+t m, size\+\_\+t k)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classBloomFilter}{Bloom\+Filter} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBloomFilter_aa7f2ed6d335cd633b4e5a1bd5f05cac4}{add}} (const std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Adds a string element to the Bloom filter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBloomFilter_a40d7deb36146a0ab57fc16c3e81abfb5}{contains}} (const std\+::string \&s) const
+\begin{DoxyCompactList}\small\item\em Checks if a string element might be in the Bloom filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classBloomFilter_ab3ca033460ceaf23b9bcd6800f5ed92e}{hash\+\_\+i}} (const std\+::string \&s, size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Hash function combining std\+::hash with a seed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classBloomFilter_ac5de006de76c393e633c6687a62771fb}{m\+\_\+bits}}
+\begin{DoxyCompactList}\small\item\em Number of bits in the filter. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classBloomFilter_a593cc66654a614de8ae0b16648b0e71e}{k\+\_\+hashes}}
+\begin{DoxyCompactList}\small\item\em Number of hash functions. \end{DoxyCompactList}\item 
+std\+::vector$<$ bool $>$ \mbox{\hyperlink{classBloomFilter_a218a44e2dcd74455a8e4f5e60239fb8c}{bits}}
+\begin{DoxyCompactList}\small\item\em Bit vector representing the Bloom filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple Bloom filter implementation. 
+
+This class provides methods to add an element to the filter and check if an element might be present in the filter. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBloomFilter_ae7f634645ff6bebea9776af692d49526}\label{classBloomFilter_ae7f634645ff6bebea9776af692d49526} 
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}}
+{\footnotesize\ttfamily Bloom\+Filter\+::\+Bloom\+Filter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{m,  }\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{classBloomFilter}{Bloom\+Filter} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Number of bits in the filter. \\
+\hline
+{\em k} & Number of hash functions to use. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBloomFilter_aa7f2ed6d335cd633b4e5a1bd5f05cac4}\label{classBloomFilter_aa7f2ed6d335cd633b4e5a1bd5f05cac4} 
+\index{BloomFilter@{BloomFilter}!add@{add}}
+\index{add@{add}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Bloom\+Filter\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a string element to the Bloom filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The string element to add. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{d2/d5a/classBloomFilter_aa7f2ed6d335cd633b4e5a1bd5f05cac4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d5a/classBloomFilter_aa7f2ed6d335cd633b4e5a1bd5f05cac4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBloomFilter_a40d7deb36146a0ab57fc16c3e81abfb5}\label{classBloomFilter_a40d7deb36146a0ab57fc16c3e81abfb5} 
+\index{BloomFilter@{BloomFilter}!contains@{contains}}
+\index{contains@{contains}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily bool Bloom\+Filter\+::contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a string element might be in the Bloom filter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The string element to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the element might be in the filter, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{d2/d5a/classBloomFilter_a40d7deb36146a0ab57fc16c3e81abfb5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBloomFilter_ab3ca033460ceaf23b9bcd6800f5ed92e}\label{classBloomFilter_ab3ca033460ceaf23b9bcd6800f5ed92e} 
+\index{BloomFilter@{BloomFilter}!hash\_i@{hash\_i}}
+\index{hash\_i@{hash\_i}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{hash\_i()}{hash\_i()}}
+{\footnotesize\ttfamily size\+\_\+t Bloom\+Filter\+::hash\+\_\+i (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Hash function combining std\+::hash with a seed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The input string to hash. \\
+\hline
+{\em i} & The hash function seed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed hash value. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d5a/classBloomFilter_ab3ca033460ceaf23b9bcd6800f5ed92e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBloomFilter_a218a44e2dcd74455a8e4f5e60239fb8c}\label{classBloomFilter_a218a44e2dcd74455a8e4f5e60239fb8c} 
+\index{BloomFilter@{BloomFilter}!bits@{bits}}
+\index{bits@{bits}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{bits}{bits}}
+{\footnotesize\ttfamily std\+::vector$<$bool$>$ Bloom\+Filter\+::bits\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bit vector representing the Bloom filter. 
+
+\Hypertarget{classBloomFilter_a593cc66654a614de8ae0b16648b0e71e}\label{classBloomFilter_a593cc66654a614de8ae0b16648b0e71e} 
+\index{BloomFilter@{BloomFilter}!k\_hashes@{k\_hashes}}
+\index{k\_hashes@{k\_hashes}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{k\_hashes}{k\_hashes}}
+{\footnotesize\ttfamily size\+\_\+t Bloom\+Filter\+::k\+\_\+hashes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of hash functions. 
+
+\Hypertarget{classBloomFilter_ac5de006de76c393e633c6687a62771fb}\label{classBloomFilter_ac5de006de76c393e633c6687a62771fb} 
+\index{BloomFilter@{BloomFilter}!m\_bits@{m\_bits}}
+\index{m\_bits@{m\_bits}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{m\_bits}{m\_bits}}
+{\footnotesize\ttfamily size\+\_\+t Bloom\+Filter\+::m\+\_\+bits\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of bits in the filter. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{blinkdb_8cpp}{blinkdb.\+cpp}}\end{DoxyCompactItemize}

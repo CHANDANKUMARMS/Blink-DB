@@ -1,0 +1,46 @@
+\doxysection{blinkdb.\+h}
+\hypertarget{blinkdb_8h_source}{}\label{blinkdb_8h_source}\mbox{\hyperlink{blinkdb_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \#include\ "{}\mbox{\hyperlink{lru__cache_8h}{lru\_cache.h}}"{}}\ \textcolor{comment}{//\ include\ the\ LRU\ cache\ header}}
+\DoxyCodeLine{00015\ \ }
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBlinkDB}{BlinkDB}}}
+\DoxyCodeLine{00025\ \ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBlinkDB_1_1Entry}{Entry}}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structBlinkDB_1_1Entry_abe331c20e1a966cdd6674f0f90b654b6}{value}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBlinkDB_1_1Entry_a9efbcae5fbbd6cb05a71cb4bf0f24632}{deleted}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \};}
+\DoxyCodeLine{00038\ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ std::unordered\_map<std::string,\ Entry>\ \mbox{\hyperlink{classBlinkDB_ab0fbb41c4e1f0921cd07073b8f5938c6}{store}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classBlinkDB_a117aeb8971702863420dda2e1cf2f0f9}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classBlinkDB_ad2d45b2afc3dbdf6b8dd739b1e10b5f4}{sstables}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe}{flush}}();}
+\DoxyCodeLine{00050\ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3}{compact}}();}
+\DoxyCodeLine{00057\ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ std::string\ \mbox{\hyperlink{classBlinkDB_a6baf44000951b9dc7aeccfdcf3424928}{search\_sstables}}(\textcolor{keyword}{const}\ std::string\ \&key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \mbox{\hyperlink{classLRUCache}{LRUCache<std::string,\ std::string>}}\ \mbox{\hyperlink{classBlinkDB_a6922b7d8550a1d88e3e9dc2d69afca7d}{cache}};}
+\DoxyCodeLine{00072\ \ }
+\DoxyCodeLine{00073\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classBlinkDB_a7430118f5952b24bb98f82d01764c3cd}{BlinkDB}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}}\ =\ 3,\ \textcolor{keywordtype}{size\_t}\ cache\_capacity\ =\ 10)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}}(\mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}}),\ \mbox{\hyperlink{classBlinkDB_a117aeb8971702863420dda2e1cf2f0f9}{size}}(0),\ \mbox{\hyperlink{classBlinkDB_a6922b7d8550a1d88e3e9dc2d69afca7d}{cache}}(cache\_capacity)\ \{\}}
+\DoxyCodeLine{00084\ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}{set}}(\textcolor{keyword}{const}\ std::string\ \&key,\ \textcolor{keyword}{const}\ std::string\ \&value);}
+\DoxyCodeLine{00094\ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ std::string\ \mbox{\hyperlink{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}{get}}(\textcolor{keyword}{const}\ std::string\ \&key);}
+\DoxyCodeLine{00104\ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}{del}}(\textcolor{keyword}{const}\ std::string\ \&key);}
+\DoxyCodeLine{00114\ \ \};}
+\DoxyCodeLine{00115\ \ }
+
+\end{DoxyCode}

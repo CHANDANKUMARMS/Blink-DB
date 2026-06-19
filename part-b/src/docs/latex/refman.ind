@@ -1,0 +1,184 @@
+\begin{theindex}
+
+  \item {add}
+    \subitem {BloomFilter}, \hyperpage{14}
+
+  \indexspace
+
+  \item {binary\_search\_file}
+    \subitem {blinkdb.cpp}, \hyperpage{24}
+  \item {bits}
+    \subitem {BloomFilter}, \hyperpage{15}
+  \item {BlinkDB}, \hyperpage{5}
+    \subitem {BlinkDB}, \hyperpage{6}
+    \subitem {cache}, \hyperpage{12}
+    \subitem {capacity}, \hyperpage{12}
+    \subitem {compact}, \hyperpage{7}
+    \subitem {del}, \hyperpage{7}
+    \subitem {flush}, \hyperpage{8}
+    \subitem {get}, \hyperpage{9}
+    \subitem {search\_sstables}, \hyperpage{10}
+    \subitem {set}, \hyperpage{11}
+    \subitem {size}, \hyperpage{12}
+    \subitem {sstables}, \hyperpage{12}
+    \subitem {store}, \hyperpage{12}
+  \item {blinkdb.cpp}, \hyperpage{23}
+    \subitem {binary\_search\_file}, \hyperpage{24}
+    \subitem {build\_index\_for\_sstable}, \hyperpage{25}
+    \subitem {get\_line\_from\_mapping}, \hyperpage{26}
+    \subitem {map\_file}, \hyperpage{26}
+    \subitem {sstable\_filters}, \hyperpage{27}
+    \subitem {sstable\_indices}, \hyperpage{27}
+    \subitem {sstable\_mmaps}, \hyperpage{27}
+  \item {blinkdb.h}, \hyperpage{27}
+  \item {BlinkDB::Entry}, \hyperpage{16}
+    \subitem {deleted}, \hyperpage{16}
+    \subitem {value}, \hyperpage{16}
+  \item {BloomFilter}, \hyperpage{13}
+    \subitem {add}, \hyperpage{14}
+    \subitem {bits}, \hyperpage{15}
+    \subitem {BloomFilter}, \hyperpage{13}
+    \subitem {contains}, \hyperpage{14}
+    \subitem {hash\_i}, \hyperpage{15}
+    \subitem {k\_hashes}, \hyperpage{15}
+    \subitem {m\_bits}, \hyperpage{16}
+  \item {BUFFER\_SIZE}
+    \subitem {server.cpp}, \hyperpage{31}
+  \item {build\_index\_for\_sstable}
+    \subitem {blinkdb.cpp}, \hyperpage{25}
+
+  \indexspace
+
+  \item {cache}
+    \subitem {BlinkDB}, \hyperpage{12}
+  \item {cacheList}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{19}
+  \item {cacheMap}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{19}
+  \item {capacity}
+    \subitem {BlinkDB}, \hyperpage{12}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{20}
+  \item {compact}
+    \subitem {BlinkDB}, \hyperpage{7}
+  \item {contains}
+    \subitem {BloomFilter}, \hyperpage{14}
+
+  \indexspace
+
+  \item {del}
+    \subitem {BlinkDB}, \hyperpage{7}
+  \item {deleted}
+    \subitem {BlinkDB::Entry}, \hyperpage{16}
+
+  \indexspace
+
+  \item {error}
+    \subitem {RESPParser}, \hyperpage{20}
+
+  \indexspace
+
+  \item {flush}
+    \subitem {BlinkDB}, \hyperpage{8}
+
+  \indexspace
+
+  \item {get}
+    \subitem {BlinkDB}, \hyperpage{9}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{18}
+  \item {get\_line\_from\_mapping}
+    \subitem {blinkdb.cpp}, \hyperpage{26}
+
+  \indexspace
+
+  \item {handleClientRequest}
+    \subitem {server.cpp}, \hyperpage{32}
+  \item {hash\_i}
+    \subitem {BloomFilter}, \hyperpage{15}
+
+  \indexspace
+
+  \item {k\_hashes}
+    \subitem {BloomFilter}, \hyperpage{15}
+
+  \indexspace
+
+  \item {lru\_cache.h}, \hyperpage{29}
+  \item {LRUCache}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{17}
+  \item {LRUCache$<$ K, V $>$}, \hyperpage{17}
+    \subitem {cacheList}, \hyperpage{19}
+    \subitem {cacheMap}, \hyperpage{19}
+    \subitem {capacity}, \hyperpage{20}
+    \subitem {get}, \hyperpage{18}
+    \subitem {LRUCache}, \hyperpage{17}
+    \subitem {put}, \hyperpage{18}
+    \subitem {remove}, \hyperpage{19}
+
+  \indexspace
+
+  \item {m\_bits}
+    \subitem {BloomFilter}, \hyperpage{16}
+  \item {main}
+    \subitem {server.cpp}, \hyperpage{32}
+  \item {map\_file}
+    \subitem {blinkdb.cpp}, \hyperpage{26}
+  \item {MAX\_EVENTS}
+    \subitem {server.cpp}, \hyperpage{31}
+
+  \indexspace
+
+  \item {ok}
+    \subitem {RESPParser}, \hyperpage{21}
+
+  \indexspace
+
+  \item {parse}
+    \subitem {RESPParser}, \hyperpage{21}
+  \item {PORT}
+    \subitem {server.cpp}, \hyperpage{31}
+  \item {put}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{18}
+
+  \indexspace
+
+  \item {remove}
+    \subitem {LRUCache$<$ K, V $>$}, \hyperpage{19}
+  \item {RESPParser}, \hyperpage{20}
+    \subitem {error}, \hyperpage{20}
+    \subitem {ok}, \hyperpage{21}
+    \subitem {parse}, \hyperpage{21}
+    \subitem {serialize}, \hyperpage{22}
+
+  \indexspace
+
+  \item {search\_sstables}
+    \subitem {BlinkDB}, \hyperpage{10}
+  \item {serialize}
+    \subitem {RESPParser}, \hyperpage{22}
+  \item {server.cpp}, \hyperpage{30}
+    \subitem {BUFFER\_SIZE}, \hyperpage{31}
+    \subitem {handleClientRequest}, \hyperpage{32}
+    \subitem {main}, \hyperpage{32}
+    \subitem {MAX\_EVENTS}, \hyperpage{31}
+    \subitem {PORT}, \hyperpage{31}
+  \item {set}
+    \subitem {BlinkDB}, \hyperpage{11}
+  \item {size}
+    \subitem {BlinkDB}, \hyperpage{12}
+  \item {sstable\_filters}
+    \subitem {blinkdb.cpp}, \hyperpage{27}
+  \item {sstable\_indices}
+    \subitem {blinkdb.cpp}, \hyperpage{27}
+  \item {sstable\_mmaps}
+    \subitem {blinkdb.cpp}, \hyperpage{27}
+  \item {sstables}
+    \subitem {BlinkDB}, \hyperpage{12}
+  \item {store}
+    \subitem {BlinkDB}, \hyperpage{12}
+
+  \indexspace
+
+  \item {value}
+    \subitem {BlinkDB::Entry}, \hyperpage{16}
+
+\end{theindex}

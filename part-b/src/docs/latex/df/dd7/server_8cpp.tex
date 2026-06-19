@@ -1,0 +1,134 @@
+\doxysection{server.\+cpp File Reference}
+\hypertarget{server_8cpp}{}\label{server_8cpp}\index{server.cpp@{server.cpp}}
+{\ttfamily \#include "{}blinkdb.\+h"{}}\newline
+{\ttfamily \#include $<$sys/epoll.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+Include dependency graph for server.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d48/server_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classRESPParser}{RESPParser}}
+\begin{DoxyCompactList}\small\item\em A simple RESP (REdis Serialization Protocol) parser and serializer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{server_8cpp_ae42954bb8545d24e3e9dcde5920c9a0b}{MAX\+\_\+\+EVENTS}}~10
+\begin{DoxyCompactList}\small\item\em Maximum number of events to process per epoll\+\_\+wait call. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{server_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~4096
+\begin{DoxyCompactList}\small\item\em Buffer size for reading client data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{server_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}~9001
+\begin{DoxyCompactList}\small\item\em Port number for the server to listen on. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{server_8cpp_adff8999689316e85d240929b432d3510}{handle\+Client\+Request}} (int client\+Fd, \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} \&db)
+\begin{DoxyCompactList}\small\item\em Handles an individual client request. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Entry point for the \doxylink{classBlinkDB}{Blink\+DB} server application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{server_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\label{server_8cpp_a6b20d41d6252e9871430c242cb1a56e7} 
+\index{server.cpp@{server.cpp}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define BUFFER\+\_\+\+SIZE~4096}
+
+
+
+Buffer size for reading client data. 
+
+\Hypertarget{server_8cpp_ae42954bb8545d24e3e9dcde5920c9a0b}\label{server_8cpp_ae42954bb8545d24e3e9dcde5920c9a0b} 
+\index{server.cpp@{server.cpp}!MAX\_EVENTS@{MAX\_EVENTS}}
+\index{MAX\_EVENTS@{MAX\_EVENTS}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_EVENTS}{MAX\_EVENTS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+EVENTS~10}
+
+
+
+Maximum number of events to process per epoll\+\_\+wait call. 
+
+\Hypertarget{server_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\label{server_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\index{server.cpp@{server.cpp}!PORT@{PORT}}
+\index{PORT@{PORT}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily \#define PORT~9001}
+
+
+
+Port number for the server to listen on. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{server_8cpp_adff8999689316e85d240929b432d3510}\label{server_8cpp_adff8999689316e85d240929b432d3510} 
+\index{server.cpp@{server.cpp}!handleClientRequest@{handleClientRequest}}
+\index{handleClientRequest@{handleClientRequest}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{handleClientRequest()}{handleClientRequest()}}
+{\footnotesize\ttfamily void handle\+Client\+Request (\begin{DoxyParamCaption}\item[{int}]{client\+Fd,  }\item[{\mbox{\hyperlink{classBlinkDB}{Blink\+DB}} \&}]{db }\end{DoxyParamCaption})}
+
+
+
+Handles an individual client request. 
+
+Reads the incoming data, parses the RESP command, executes it against \doxylink{classBlinkDB}{Blink\+DB}, and sends back the appropriate response.
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Fd} & The file descriptor for the client connection. \\
+\hline
+{\em db} & A reference to the \doxylink{classBlinkDB}{Blink\+DB} instance. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dd7/server_8cpp_adff8999689316e85d240929b432d3510_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{df/dd7/server_8cpp_adff8999689316e85d240929b432d3510_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{server.cpp@{server.cpp}!main@{main}}
+\index{main@{main}!server.cpp@{server.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Entry point for the \doxylink{classBlinkDB}{Blink\+DB} server application. 
+
+Sets up a TCP server, initializes epoll for I/O multiplexing, and handles client connections.
+
+\begin{DoxyReturn}{Returns}
+int Exit status. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/dd7/server_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

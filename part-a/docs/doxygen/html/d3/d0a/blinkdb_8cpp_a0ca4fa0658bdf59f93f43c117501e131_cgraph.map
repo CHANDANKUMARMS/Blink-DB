@@ -1,0 +1,15 @@
+<map id="binary_search_file" name="binary_search_file">
+<area shape="rect" id="Node000001" title="Perform a binary search on the in&#45;memory index for a given SSTable file." alt="" coords="5,55,145,80"/>
+<area shape="rect" id="Node000002" href="$d3/d0a/blinkdb_8cpp.html#addad405af359df828567151328f601f4" title="Build an in&#45;memory index for an SSTable file and create its Bloom filter." alt="" coords="193,55,369,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,65,180,65,180,70,146,70"/>
+<area shape="rect" id="Node000005" href="$d3/d0a/blinkdb_8cpp.html#a7bf594efc670faca63d538b39dde4218" title="Retrieve a full line from a memory&#45;mapped file starting at a given offset." alt="" coords="417,5,593,31"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="131,52,193,41,302,28,404,20,404,26,302,34,194,46,132,57"/>
+<area shape="rect" id="Node000006" href="$d3/d0a/blinkdb_8cpp.html#ad3681da1d388fcc235dab6bd01c8c26f" title="Memory&#45;map a file and return a pointer to its content along with its size." alt="" coords="466,104,545,129"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="129,77,194,90,334,105,452,112,452,117,333,110,193,95,128,83"/>
+<area shape="rect" id="Node000003" href="$d2/d5a/classBloomFilter.html#aa7f2ed6d335cd633b4e5a1bd5f05cac4" title="Adds a string element to the Bloom filter." alt="" coords="441,55,570,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="370,65,427,65,427,70,370,70"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="339,52,433,31,434,36,340,57"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="340,77,453,103,452,108,339,83"/>
+<area shape="rect" id="Node000004" href="$d2/d5a/classBloomFilter.html#ab3ca033460ceaf23b9bcd6800f5ed92e" title="Hash function combining std::hash with a seed." alt="" coords="641,55,788,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="570,65,627,65,627,70,570,70"/>
+</map>

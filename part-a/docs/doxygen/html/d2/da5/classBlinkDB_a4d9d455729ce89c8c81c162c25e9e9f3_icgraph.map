@@ -1,0 +1,10 @@
+<map id="BlinkDB::compact" name="BlinkDB::compact">
+<area shape="rect" id="Node000001" title="Compacts multiple SSTable files into a single SSTable." alt="" coords="259,31,397,56"/>
+<area shape="rect" id="Node000002" href="$d2/da5/classBlinkDB.html#a518685f4f427530f71e8202f95d85f6c" title="Deletes a key&#45;value pair." alt="" coords="108,5,211,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,33,210,28,211,23,245,28"/>
+<area shape="rect" id="Node000004" href="$d2/da5/classBlinkDB.html#a48fdabd2e183729f2bc6d6262d83379e" title="Sets the value for a given key." alt="" coords="108,55,211,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="245,58,211,63,210,57,244,53"/>
+<area shape="rect" id="Node000003" href="$d3/d0a/blinkdb_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main function providing a REPL interface for the BlinkDB storage engine." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,34,61,41,60,35,94,28"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="94,58,60,51,61,46,95,52"/>
+</map>

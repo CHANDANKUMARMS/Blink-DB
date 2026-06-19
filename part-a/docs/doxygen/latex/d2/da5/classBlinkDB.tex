@@ -1,0 +1,386 @@
+\doxysection{Blink\+DB Class Reference}
+\hypertarget{classBlinkDB}{}\label{classBlinkDB}\index{BlinkDB@{BlinkDB}}
+
+
+A simple key-\/value storage engine.  
+
+
+
+
+{\ttfamily \#include $<$blinkdb.\+h$>$}
+
+
+
+Collaboration diagram for Blink\+DB\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d9/d65/classBlinkDB__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBlinkDB_1_1Entry}{Entry}}
+\begin{DoxyCompactList}\small\item\em Represents an entry in the in-\/memory memtable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlinkDB_a7430118f5952b24bb98f82d01764c3cd}{Blink\+DB}} (size\+\_\+t \mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}}=3, size\+\_\+t cache\+\_\+capacity=10)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classBlinkDB}{Blink\+DB} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}{set}} (const std\+::string \&key, const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Sets the value for a given key. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}{get}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Retrieves the value associated with a given key. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}{del}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Deletes a key-\/value pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe}{flush}} ()
+\begin{DoxyCompactList}\small\item\em Flushes the in-\/memory memtable to an SSTable file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3}{compact}} ()
+\begin{DoxyCompactList}\small\item\em Compacts multiple SSTable files into a single SSTable. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkDB_a6baf44000951b9dc7aeccfdcf3424928}{search\+\_\+sstables}} (const std\+::string \&key) const
+\begin{DoxyCompactList}\small\item\em Searches for a key in all SSTable files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structBlinkDB_1_1Entry}{Entry}} $>$ \mbox{\hyperlink{classBlinkDB_ab0fbb41c4e1f0921cd07073b8f5938c6}{store}}
+\begin{DoxyCompactList}\small\item\em In-\/memory memtable. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}{capacity}}
+\begin{DoxyCompactList}\small\item\em Maximum number of entries in the memtable. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classBlinkDB_a117aeb8971702863420dda2e1cf2f0f9}{size}}
+\begin{DoxyCompactList}\small\item\em Current number of entries in the memtable. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classBlinkDB_ad2d45b2afc3dbdf6b8dd739b1e10b5f4}{sstables}}
+\begin{DoxyCompactList}\small\item\em List of SSTable file names. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLRUCache}{LRUCache}}$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classBlinkDB_a6922b7d8550a1d88e3e9dc2d69afca7d}{cache}}
+\begin{DoxyCompactList}\small\item\em LRU cache used to speed up GET operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple key-\/value storage engine. 
+
+The \doxylink{classBlinkDB}{Blink\+DB} class provides functionality for setting, getting, and deleting key-\/value pairs. It uses an in-\/memory memtable and persistent SSTable files. It also leverages an LRU cache for fast retrieval of frequently accessed keys. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBlinkDB_a7430118f5952b24bb98f82d01764c3cd}\label{classBlinkDB_a7430118f5952b24bb98f82d01764c3cd} 
+\index{BlinkDB@{BlinkDB}!BlinkDB@{BlinkDB}}
+\index{BlinkDB@{BlinkDB}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{BlinkDB()}{BlinkDB()}}
+{\footnotesize\ttfamily Blink\+DB\+::\+Blink\+DB (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{capacity = {\ttfamily 3},  }\item[{size\+\_\+t}]{cache\+\_\+capacity = {\ttfamily 10} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classBlinkDB}{Blink\+DB} instance. 
+
+The constructor initializes the memtable capacity and the LRU cache capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & Maximum number of entries for the memtable. Default is 3. \\
+\hline
+{\em cache\+\_\+capacity} & Capacity for the LRU cache. Default is 10. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3}\label{classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3} 
+\index{BlinkDB@{BlinkDB}!compact@{compact}}
+\index{compact@{compact}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{compact()}{compact()}}
+{\footnotesize\ttfamily void Blink\+DB\+::compact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Compacts multiple SSTable files into a single SSTable. 
+
+Compacts SSTable files by merging them into a single file.
+
+This function merges SSTable files and removes obsolete entries.
+
+This function merges all SSTable files into one, removes tombstones, and rebuilds the in-\/memory indices, Bloom filters, and memory maps. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a4d9d455729ce89c8c81c162c25e9e9f3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}\label{classBlinkDB_a518685f4f427530f71e8202f95d85f6c} 
+\index{BlinkDB@{BlinkDB}!del@{del}}
+\index{del@{del}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{del()}{del()}}
+{\footnotesize\ttfamily bool Blink\+DB\+::del (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Deletes a key-\/value pair. 
+
+Deletes the key-\/value pair for a given key.
+
+The key is marked as deleted in the memtable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key existed and was marked for deletion, false otherwise.
+\end{DoxyReturn}
+The deletion is performed in the in-\/memory store and, if necessary, a tombstone is added.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key existed and was marked for deletion, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a518685f4f427530f71e8202f95d85f6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d2/da5/classBlinkDB_a518685f4f427530f71e8202f95d85f6c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe}\label{classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe} 
+\index{BlinkDB@{BlinkDB}!flush@{flush}}
+\index{flush@{flush}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily void Blink\+DB\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flushes the in-\/memory memtable to an SSTable file. 
+
+Flushes the in-\/memory store to disk as a new SSTable file.
+
+This function writes the current memtable to disk as an SSTable file.
+
+The function writes all key-\/value pairs to a file and updates the in-\/memory index, Bloom filter, and memory mapping for the new SSTable. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a95fd290b10dc4deb9a985714e01b84fe_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}\label{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6} 
+\index{BlinkDB@{BlinkDB}!get@{get}}
+\index{get@{get}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::string Blink\+DB\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Retrieves the value associated with a given key. 
+
+The function checks the memtable, cache, and SSTable files in order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key, or "{}\+NULL"{} if not found.
+\end{DoxyReturn}
+The function first checks the LRU cache, then the in-\/memory store, and finally the SSTable files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The associated value, or "{}\+NULL"{} if not found. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_af9a9eae004f2a782e17edd65394d58e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d2/da5/classBlinkDB_af9a9eae004f2a782e17edd65394d58e6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBlinkDB_a6baf44000951b9dc7aeccfdcf3424928}\label{classBlinkDB_a6baf44000951b9dc7aeccfdcf3424928} 
+\index{BlinkDB@{BlinkDB}!search\_sstables@{search\_sstables}}
+\index{search\_sstables@{search\_sstables}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{search\_sstables()}{search\_sstables()}}
+{\footnotesize\ttfamily std\+::string Blink\+DB\+::search\+\_\+sstables (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Searches for a key in all SSTable files. 
+
+The search is performed on the SSTable files if the key is not found in the memtable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key, or "{}\+NULL"{} if not found.
+\end{DoxyReturn}
+The search is performed from the newest to the oldest SSTable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The associated value if found, otherwise "{}\+NULL"{}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a6baf44000951b9dc7aeccfdcf3424928_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}\label{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e} 
+\index{BlinkDB@{BlinkDB}!set@{set}}
+\index{set@{set}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Blink\+DB\+::set (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the value for a given key. 
+
+Sets the value for a given key in the storage engine.
+
+If the key already exists, its value is updated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to set. \\
+\hline
+{\em value} & The value to associate with the key.\\
+\hline
+\end{DoxyParams}
+This method updates the in-\/memory store and the LRU cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to set. \\
+\hline
+{\em value} & The value to associate with the key. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da5/classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d2/da5/classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBlinkDB_a6922b7d8550a1d88e3e9dc2d69afca7d}\label{classBlinkDB_a6922b7d8550a1d88e3e9dc2d69afca7d} 
+\index{BlinkDB@{BlinkDB}!cache@{cache}}
+\index{cache@{cache}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{cache}{cache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLRUCache}{LRUCache}}$<$std\+::string, std\+::string$>$ Blink\+DB\+::cache\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+LRU cache used to speed up GET operations. 
+
+\Hypertarget{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9}\label{classBlinkDB_ac15a50546595aa3c5dadf06f37aef0b9} 
+\index{BlinkDB@{BlinkDB}!capacity@{capacity}}
+\index{capacity@{capacity}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily size\+\_\+t Blink\+DB\+::capacity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Maximum number of entries in the memtable. 
+
+\Hypertarget{classBlinkDB_a117aeb8971702863420dda2e1cf2f0f9}\label{classBlinkDB_a117aeb8971702863420dda2e1cf2f0f9} 
+\index{BlinkDB@{BlinkDB}!size@{size}}
+\index{size@{size}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily size\+\_\+t Blink\+DB\+::size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current number of entries in the memtable. 
+
+\Hypertarget{classBlinkDB_ad2d45b2afc3dbdf6b8dd739b1e10b5f4}\label{classBlinkDB_ad2d45b2afc3dbdf6b8dd739b1e10b5f4} 
+\index{BlinkDB@{BlinkDB}!sstables@{sstables}}
+\index{sstables@{sstables}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{sstables}{sstables}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Blink\+DB\+::sstables\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of SSTable file names. 
+
+\Hypertarget{classBlinkDB_ab0fbb41c4e1f0921cd07073b8f5938c6}\label{classBlinkDB_ab0fbb41c4e1f0921cd07073b8f5938c6} 
+\index{BlinkDB@{BlinkDB}!store@{store}}
+\index{store@{store}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{store}{store}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structBlinkDB_1_1Entry}{Entry}}$>$ Blink\+DB\+::store\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+In-\/memory memtable. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{blinkdb_8h}{blinkdb.\+h}}\item 
+\mbox{\hyperlink{blinkdb_8cpp}{blinkdb.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,12 @@
+<map id="binary_search_file" name="binary_search_file">
+<area shape="rect" id="Node000001" title="Perform a binary search on the in&#45;memory index for a given SSTable file." alt="" coords="343,55,483,80"/>
+<area shape="rect" id="Node000002" href="$d2/da5/classBlinkDB.html#a518685f4f427530f71e8202f95d85f6c" title="Deletes a key&#45;value pair." alt="" coords="150,5,253,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="344,54,252,32,254,27,345,49"/>
+<area shape="rect" id="Node000004" href="$d2/da5/classBlinkDB.html#af9a9eae004f2a782e17edd65394d58e6" title="Retrieves the value associated with a given key." alt="" coords="150,55,253,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="329,70,253,70,253,65,329,65"/>
+<area shape="rect" id="Node000005" href="$d2/da5/classBlinkDB.html#a6baf44000951b9dc7aeccfdcf3424928" title="Searches for a key in all SSTable files." alt="" coords="108,104,295,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="345,86,257,107,256,101,344,81"/>
+<area shape="rect" id="Node000003" href="$d3/d0a/blinkdb_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main function providing a REPL interface for the BlinkDB storage engine." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,30,60,42,60,37,136,25"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="136,61,60,50,60,44,137,55"/>
+</map>

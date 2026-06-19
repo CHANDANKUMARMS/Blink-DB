@@ -1,0 +1,60 @@
+\doxysection{lru\+\_\+cache.\+h}
+\hypertarget{lru__cache_8h_source}{}\label{lru__cache_8h_source}\mbox{\hyperlink{lru__cache_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LRUCACHE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LRUCACHE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ V>}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLRUCache}{LRUCache}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classLRUCache_a68139c2724f59ac2b6e1b67523ef7b4a}{LRUCache}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLRUCache_a96c9634abf8bad916945b913288bdcdf}{capacity}})\ :\ \mbox{\hyperlink{classLRUCache_a96c9634abf8bad916945b913288bdcdf}{capacity}}(\mbox{\hyperlink{classLRUCache_a96c9634abf8bad916945b913288bdcdf}{capacity}})\ \{\}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classLRUCache_a2882cc8116f5cb542561aa84bfb78df0}{get}}(\textcolor{keyword}{const}\ K\ \&key,\ V\ \&value)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.find(key);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.end())}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ accessed\ item\ to\ the\ front\ (most\ recently\ used)}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.splice(\mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.begin(),\ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}},\ it-\/>second);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ value\ =\ it-\/>second-\/>second;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLRUCache_a7b9212e727fe369b3b7fe5903f4fbee2}{put}}(\textcolor{keyword}{const}\ K\ \&key,\ \textcolor{keyword}{const}\ V\ \&value)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.find(key);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.end())\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ value\ and\ move\ to\ front}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>second-\/>second\ =\ value;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.splice(\mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.begin(),\ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}},\ it-\/>second);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ capacity,\ remove\ least\ recently\ used\ if\ needed}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.size()\ >=\ \mbox{\hyperlink{classLRUCache_a96c9634abf8bad916945b913288bdcdf}{capacity}})\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ last\ =\ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.back();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.erase(last.first);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.pop\_back();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.emplace\_front(key,\ value);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}[key]\ =\ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.begin();}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLRUCache_ab3d704588874bce6c9c81a0fcc7d839a}{remove}}(\textcolor{keyword}{const}\ K\ \&key)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.find(key);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.end())\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}}.erase(it-\/>second);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}}.erase(it);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLRUCache_a96c9634abf8bad916945b913288bdcdf}{capacity}};\ }
+\DoxyCodeLine{00093\ \ \ \ \ std::list<std::pair<K,\ V>>\ \mbox{\hyperlink{classLRUCache_a34e50d2be4c07372b2020ca8986bd416}{cacheList}};\ }
+\DoxyCodeLine{00094\ \ \ \ \ std::unordered\_map<K,\ typename\ std::list<std::pair<K,\ V>>::iterator>\ \mbox{\hyperlink{classLRUCache_af1c2a14d1aba7fad3786a5f66410da10}{cacheMap}};\ }
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LRUCACHE\_H}}
+
+\end{DoxyCode}

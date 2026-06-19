@@ -1,0 +1,251 @@
+\doxysection{blinkdb.\+cpp File Reference}
+\hypertarget{blinkdb_8cpp}{}\label{blinkdb_8cpp}\index{blinkdb.cpp@{blinkdb.cpp}}
+
+
+Implementation of the \doxylink{classBlinkDB}{Blink\+DB} key-\/value storage engine and REPL.  
+
+
+{\ttfamily \#include "{}blinkdb.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for blinkdb.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/df4/blinkdb_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBloomFilter}{Bloom\+Filter}}
+\begin{DoxyCompactList}\small\item\em A simple Bloom filter implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{blinkdb_8cpp_ad3681da1d388fcc235dab6bd01c8c26f}{map\+\_\+file}} (const std\+::string \&filename, size\+\_\+t \&filesize)
+\begin{DoxyCompactList}\small\item\em Memory-\/map a file and return a pointer to its content along with its size. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{blinkdb_8cpp_a7bf594efc670faca63d538b39dde4218}{get\+\_\+line\+\_\+from\+\_\+mapping}} (const char \texorpdfstring{$\ast$}{*}data, size\+\_\+t filesize, size\+\_\+t offset)
+\begin{DoxyCompactList}\small\item\em Retrieve a full line from a memory-\/mapped file starting at a given offset. \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::streampos $>$ $>$ \mbox{\hyperlink{blinkdb_8cpp_addad405af359df828567151328f601f4}{build\+\_\+index\+\_\+for\+\_\+sstable}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Build an in-\/memory index for an SSTable file and create its Bloom filter. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{blinkdb_8cpp_a0ca4fa0658bdf59f93f43c117501e131}{binary\+\_\+search\+\_\+file}} (const std\+::string \&filename, const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Perform a binary search on the in-\/memory index for a given SSTable file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{blinkdb_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function providing a REPL interface for the \doxylink{classBlinkDB}{Blink\+DB} storage engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::streampos $>$ $>$ $>$ \mbox{\hyperlink{blinkdb_8cpp_a37574040ed1a814e118d0dddb742a0b6}{sstable\+\_\+indices}}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classBloomFilter}{Bloom\+Filter}} $>$ \mbox{\hyperlink{blinkdb_8cpp_aeecceada65277c30b0c965f59f55c651}{sstable\+\_\+filters}}
+\item 
+static std\+::unordered\+\_\+map$<$ std\+::string, std\+::pair$<$ const char \texorpdfstring{$\ast$}{*}, size\+\_\+t $>$ $>$ \mbox{\hyperlink{blinkdb_8cpp_a69273ca16852776c76f6c7e46cf990b0}{sstable\+\_\+mmaps}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the \doxylink{classBlinkDB}{Blink\+DB} key-\/value storage engine and REPL. 
+
+This file implements the core functionality of the \doxylink{classBlinkDB}{Blink\+DB} storage engine, including the Bloom filter, in-\/memory indices for SSTables, and helper functions for memory mapping. It also contains the main REPL for interacting with the storage engine. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{blinkdb_8cpp_a0ca4fa0658bdf59f93f43c117501e131}\label{blinkdb_8cpp_a0ca4fa0658bdf59f93f43c117501e131} 
+\index{blinkdb.cpp@{blinkdb.cpp}!binary\_search\_file@{binary\_search\_file}}
+\index{binary\_search\_file@{binary\_search\_file}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{binary\_search\_file()}{binary\_search\_file()}}
+{\footnotesize\ttfamily static std\+::string binary\+\_\+search\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Perform a binary search on the in-\/memory index for a given SSTable file. 
+
+First, the Bloom filter is checked to quickly rule out a missing key. If the key might exist, a binary search is performed on the index and the corresponding record is retrieved.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the SSTable file. \\
+\hline
+{\em key} & The key to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key, or "{}\+NULL"{} if not found. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_a0ca4fa0658bdf59f93f43c117501e131_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_a0ca4fa0658bdf59f93f43c117501e131_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{blinkdb_8cpp_addad405af359df828567151328f601f4}\label{blinkdb_8cpp_addad405af359df828567151328f601f4} 
+\index{blinkdb.cpp@{blinkdb.cpp}!build\_index\_for\_sstable@{build\_index\_for\_sstable}}
+\index{build\_index\_for\_sstable@{build\_index\_for\_sstable}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{build\_index\_for\_sstable()}{build\_index\_for\_sstable()}}
+{\footnotesize\ttfamily static std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::streampos $>$ $>$ build\+\_\+index\+\_\+for\+\_\+sstable (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Build an in-\/memory index for an SSTable file and create its Bloom filter. 
+
+The function reads each record (line) from the SSTable, extracts the key, and records its file offset. It then builds a Bloom filter based on the keys.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the SSTable file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of (key, file offset) pairs sorted by key. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_addad405af359df828567151328f601f4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_addad405af359df828567151328f601f4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{blinkdb_8cpp_a7bf594efc670faca63d538b39dde4218}\label{blinkdb_8cpp_a7bf594efc670faca63d538b39dde4218} 
+\index{blinkdb.cpp@{blinkdb.cpp}!get\_line\_from\_mapping@{get\_line\_from\_mapping}}
+\index{get\_line\_from\_mapping@{get\_line\_from\_mapping}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_line\_from\_mapping()}{get\_line\_from\_mapping()}}
+{\footnotesize\ttfamily static std\+::string get\+\_\+line\+\_\+from\+\_\+mapping (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{data,  }\item[{size\+\_\+t}]{filesize,  }\item[{size\+\_\+t}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieve a full line from a memory-\/mapped file starting at a given offset. 
+
+The returned line does not include the newline character.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the mapped file data. \\
+\hline
+{\em filesize} & Size of the file. \\
+\hline
+{\em offset} & Offset in the file from which to start reading. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The line read from the file. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_a7bf594efc670faca63d538b39dde4218_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{blinkdb_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{blinkdb_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{blinkdb.cpp@{blinkdb.cpp}!main@{main}}
+\index{main@{main}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function providing a REPL interface for the \doxylink{classBlinkDB}{Blink\+DB} storage engine. 
+
+The REPL supports the following commands\+:
+\begin{DoxyItemize}
+\item SET $<$key$>$ "{}$<$value$>$"{}
+\item GET $<$key$>$
+\item DEL $<$key$>$
+\item EXIT
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+int Exit status code. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{blinkdb_8cpp_ad3681da1d388fcc235dab6bd01c8c26f}\label{blinkdb_8cpp_ad3681da1d388fcc235dab6bd01c8c26f} 
+\index{blinkdb.cpp@{blinkdb.cpp}!map\_file@{map\_file}}
+\index{map\_file@{map\_file}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{map\_file()}{map\_file()}}
+{\footnotesize\ttfamily static const char \texorpdfstring{$\ast$}{*} map\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{size\+\_\+t \&}]{filesize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Memory-\/map a file and return a pointer to its content along with its size. 
+
+If the file has already been mapped, the cached mapping is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to map. \\
+\hline
+{\em filesize} & Output parameter for the size of the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the mapped file data, or nullptr on error. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/blinkdb_8cpp_ad3681da1d388fcc235dab6bd01c8c26f_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{blinkdb_8cpp_aeecceada65277c30b0c965f59f55c651}\label{blinkdb_8cpp_aeecceada65277c30b0c965f59f55c651} 
+\index{blinkdb.cpp@{blinkdb.cpp}!sstable\_filters@{sstable\_filters}}
+\index{sstable\_filters@{sstable\_filters}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{sstable\_filters}{sstable\_filters}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{classBloomFilter}{Bloom\+Filter}}$>$ sstable\+\_\+filters\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{blinkdb_8cpp_a37574040ed1a814e118d0dddb742a0b6}\label{blinkdb_8cpp_a37574040ed1a814e118d0dddb742a0b6} 
+\index{blinkdb.cpp@{blinkdb.cpp}!sstable\_indices@{sstable\_indices}}
+\index{sstable\_indices@{sstable\_indices}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{sstable\_indices}{sstable\_indices}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$std\+::pair$<$std\+::string, std\+::streampos$>$ $>$ $>$ sstable\+\_\+indices\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{blinkdb_8cpp_a69273ca16852776c76f6c7e46cf990b0}\label{blinkdb_8cpp_a69273ca16852776c76f6c7e46cf990b0} 
+\index{blinkdb.cpp@{blinkdb.cpp}!sstable\_mmaps@{sstable\_mmaps}}
+\index{sstable\_mmaps@{sstable\_mmaps}!blinkdb.cpp@{blinkdb.cpp}}
+\doxysubsubsection{\texorpdfstring{sstable\_mmaps}{sstable\_mmaps}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::pair$<$const char\texorpdfstring{$\ast$}{*}, size\+\_\+t$>$ $>$ sstable\+\_\+mmaps\hspace{0.3cm}{\ttfamily [static]}}
+

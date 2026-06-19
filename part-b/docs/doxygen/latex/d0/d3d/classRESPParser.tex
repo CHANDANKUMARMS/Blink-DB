@@ -1,0 +1,134 @@
+\doxysection{RESPParser Class Reference}
+\hypertarget{classRESPParser}{}\label{classRESPParser}\index{RESPParser@{RESPParser}}
+
+
+A simple RESP (REdis Serialization Protocol) parser and serializer.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classRESPParser_aca0a17a7f5b7a25a22293a2505323e8c}{parse}} (const std\+::string \&input)
+\begin{DoxyCompactList}\small\item\em Parses a RESP-\/formatted input string into tokens. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classRESPParser_a5ee6ed65562bebb571473fe5f542e82f}{serialize}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Serializes data into RESP format. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classRESPParser_a66047c49a0a168968d20753a32159f70}{ok}} ()
+\begin{DoxyCompactList}\small\item\em Generates a RESP "{}\+OK"{} message. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classRESPParser_af76162990b3684403f895ea16e982c2c}{error}} (const std\+::string \&msg)
+\begin{DoxyCompactList}\small\item\em Generates a RESP error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple RESP (REdis Serialization Protocol) parser and serializer. 
+
+This class provides static methods to parse RESP input and serialize responses. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRESPParser_af76162990b3684403f895ea16e982c2c}\label{classRESPParser_af76162990b3684403f895ea16e982c2c} 
+\index{RESPParser@{RESPParser}!error@{error}}
+\index{error@{error}!RESPParser@{RESPParser}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily static std\+::string RESPParser\+::error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Generates a RESP error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The error message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A RESP-\/formatted error message. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d3d/classRESPParser_af76162990b3684403f895ea16e982c2c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classRESPParser_a66047c49a0a168968d20753a32159f70}\label{classRESPParser_a66047c49a0a168968d20753a32159f70} 
+\index{RESPParser@{RESPParser}!ok@{ok}}
+\index{ok@{ok}!RESPParser@{RESPParser}}
+\doxysubsubsection{\texorpdfstring{ok()}{ok()}}
+{\footnotesize\ttfamily static std\+::string RESPParser\+::ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Generates a RESP "{}\+OK"{} message. 
+
+\begin{DoxyReturn}{Returns}
+A RESP-\/formatted "{}\+OK"{} message. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d3d/classRESPParser_a66047c49a0a168968d20753a32159f70_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classRESPParser_aca0a17a7f5b7a25a22293a2505323e8c}\label{classRESPParser_aca0a17a7f5b7a25a22293a2505323e8c} 
+\index{RESPParser@{RESPParser}!parse@{parse}}
+\index{parse@{parse}!RESPParser@{RESPParser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily static std\+::vector$<$ std\+::string $>$ RESPParser\+::parse (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Parses a RESP-\/formatted input string into tokens. 
+
+The function expects the input to be in RESP format and extracts tokens accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The RESP-\/formatted string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of tokens extracted from the input. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d3d/classRESPParser_aca0a17a7f5b7a25a22293a2505323e8c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classRESPParser_a5ee6ed65562bebb571473fe5f542e82f}\label{classRESPParser_a5ee6ed65562bebb571473fe5f542e82f} 
+\index{RESPParser@{RESPParser}!serialize@{serialize}}
+\index{serialize@{serialize}!RESPParser@{RESPParser}}
+\doxysubsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily static std\+::string RESPParser\+::serialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Serializes data into RESP format. 
+
+For "{}\+NULL"{} data, a special RESP representation is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to serialize. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A RESP-\/formatted string representing the data. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d3d/classRESPParser_a5ee6ed65562bebb571473fe5f542e82f_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{server_8cpp}{server.\+cpp}}\end{DoxyCompactItemize}

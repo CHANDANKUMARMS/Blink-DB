@@ -1,0 +1,40 @@
+\doxysection{blinkdb.\+h File Reference}
+\hypertarget{blinkdb_8h}{}\label{blinkdb_8h}\index{blinkdb.h@{blinkdb.h}}
+
+
+Header file for the \doxylink{classBlinkDB}{Blink\+DB} key-\/value storage engine.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}lru\+\_\+cache.\+h"{}}\newline
+Include dependency graph for blinkdb.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{d1/d21/blinkdb_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{d9/d92/blinkdb_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}
+\begin{DoxyCompactList}\small\item\em A simple key-\/value storage engine. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structBlinkDB_1_1Entry}{Blink\+DB\+::\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents an entry in the in-\/memory memtable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the \doxylink{classBlinkDB}{Blink\+DB} key-\/value storage engine. 
+
+This file declares the \doxylink{classBlinkDB}{Blink\+DB} class which implements a simple key-\/value storage engine with in-\/memory memtable and SSTable persistence, along with an LRU cache for fast GET operations. 

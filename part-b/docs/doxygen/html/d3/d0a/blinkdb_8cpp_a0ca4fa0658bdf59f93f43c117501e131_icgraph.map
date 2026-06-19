@@ -1,0 +1,14 @@
+<map id="binary_search_file" name="binary_search_file">
+<area shape="rect" id="Node000001" title="Performs a binary search on the in&#45;memory index for a given SSTable file." alt="" coords="548,55,688,80"/>
+<area shape="rect" id="Node000002" href="$d2/da5/classBlinkDB.html#a518685f4f427530f71e8202f95d85f6c" title="Deletes a key from the database." alt="" coords="355,5,458,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="549,54,458,32,459,27,550,49"/>
+<area shape="rect" id="Node000005" href="$d2/da5/classBlinkDB.html#af9a9eae004f2a782e17edd65394d58e6" title="Retrieves the value associated with a given key." alt="" coords="355,55,458,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="534,70,458,70,458,65,534,65"/>
+<area shape="rect" id="Node000006" href="$d2/da5/classBlinkDB.html#a6baf44000951b9dc7aeccfdcf3424928" title="Searches for a key in the SSTable files." alt="" coords="313,104,500,129"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="550,86,463,107,461,101,549,81"/>
+<area shape="rect" id="Node000003" href="$df/dd7/server_8cpp.html#adff8999689316e85d240929b432d3510" title="Handles an individual client request." alt="" coords="108,31,265,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="342,28,266,37,265,32,341,23"/>
+<area shape="rect" id="Node000004" href="$df/dd7/server_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Entry point for the BlinkDB server application." alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,46,60,46,60,41,94,41"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="341,63,265,55,266,49,342,58"/>
+</map>
